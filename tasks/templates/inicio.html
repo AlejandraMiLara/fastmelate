@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% load static %}
+        <script type="text/javascript">
+            window.location.href = "{% url 'panel' %}";
+        </script>
+    {% else %}
+        <div class="jumbotron text-center" style="background-color: #fff4c2; color: #404040;">
+            <h1 class="display-4 text-danger">¡Bienvenido a FASTMelate 🍒!</h1>
+            <p class="lead">
+                FASTMelate es tu mejor aliado para generar y gestionar números de sorteo de manera rápida y eficiente.
+            </p>
+            <hr class="my-4">
+            <p>Descubre las características que hacen de FASTMelate la mejor opción para tus sorteos:</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'registro' %}" role="button">Regístrarme</a>
+            <a class="btn btn-secondary btn-lg" href="{% url 'ingreso' %}" role="button">Iniciar Sesión</a>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Generación Rápida</h5>
+                            <p class="card-text" style="color: #404040;">
+                                Genera números de sorteo únicos en cuestión de segundos con nuestro avanzado algoritmo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Historial Personalizado</h5>
+                            <p class="card-text" style="color: #404040;">
+                                Guarda y consulta todos tus números generados para tener un control total de tu participación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Interfaz Amigable</h5>
+                            <p class="card-text" style="color: #404040;">
+                                Disfruta de una interfaz intuitiva y fácil de usar, diseñada para brindarte la mejor experiencia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

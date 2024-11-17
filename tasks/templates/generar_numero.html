@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="text-center">
+      <h2>Generar Número de Sorteo 🍒</h2>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary mt-3">Generar Número</button>
+      </form>
+  </div>
+{% endblock %}

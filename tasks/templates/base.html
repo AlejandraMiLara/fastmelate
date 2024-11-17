@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASTMelate 🍒</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'tasks/favicon.png' %}">
+
+    <style>
+        body {
+            background-color: #fff4c2; /* Fondo claro */
+            color: #404040; /* Textos oscuros */
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        .navbar {
+            background-color: #f8d764;
+        }
+        .navbar-nav .nav-link {
+            color: #404040 !important;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #d75b3f !important; 
+        }
+        .btn-primary {
+            background-color: #d75b3f;
+            border-color: #d75b3f;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #e0684f;
+            border-color: #d75b3f;
+        }
+        .nav-pills .nav-link {
+            background-color: #f8d764; 
+            color: #404040;
+            border-radius: .25rem;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #d75b3f;
+            color: #ffffff;
+        }
+        .nav-pills .nav-link:hover {
+            background-color: #e0684f;
+            color: #fff4c2;
+        }
+        .navbar-dark .navbar-brand {
+            color: #d75b3f;
+            font-size: x-large;
+            letter-spacing: 5px;
+            font-weight: 500;
+        }
+        form {
+            background-color: #f8d764;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgb(133 133 62 / 10%);
+            border-radius: 50px;
+        }
+
+        input {
+            padding: 2%;
+            color: #404040;
+            border: 2px #69913d solid;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-align: -webkit-center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: .5rem;
+            font-weight: 500;
+        }
+
+        .card-body {
+            background-color: #d75b3f;
+        }
+
+        h5.card-title {
+            color: #f8d764;
+        }   
+        
+        p.card-text {
+            color: #ffffff !important;
+        }
+
+        a.btn.btn-secondary.btn-lg {
+            background-color: #69913d;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">FASTMelate 🍒</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/panel">Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/salir">Cerrar Sesión</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/ingreso">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registro">Regístrarme</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% if user.is_authenticated %}
+    <nav class="nav nav-pills mb-4">
+        <a class="nav-link {% if request.path == '/generar_numero/' %}active{% endif %}" aria-current="page" href="/generar_numero">Generar Número</a>
+        <a class="nav-link {% if request.path == '/ver_numeros/' %}active{% endif %}" aria-current="page" href="/ver_numeros">Ver Mis Números</a>
+    </nav>
+    {% endif %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer> <div class="container"> <p>🍒 FASTMelate 🍒 </p> </div> </footer>
+</body>
+</html>

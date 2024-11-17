@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <h2>Mis Números de Sorteo 🍒</h2>
+    <ul class="list-group mt-3">
+        {% for numero in numeros %}
+        <li class="list-group-item bg-dark text-white">
+            {{ numero.r1 }}, {{ numero.r2 }}, {{ numero.r3 }}, {{ numero.r4 }}, {{ numero.r5 }}, {{ numero.r6 }}
+            <br>
+            <small>{{ numero.fecha_generado }} {{ numero.hora_generado }}</small>
+            <a href="{% url 'eliminar_numero' numero.id %}" class="btn btn-danger btn-sm float-right">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
